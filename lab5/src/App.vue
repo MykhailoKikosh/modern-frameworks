@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import UploadPreviewInput from "@/components/UploadPreviewInput.vue";
+import DemoPage from '@/views/demoPage.vue'
 </script>
 
 <template>
-  <h1>Demo plugin component</h1>
-  <p>
-    <UploadPreviewInput :max-files="3"/>
-  </p>
+  <div class="md:container md:mx-auto p-5">
+    <DemoPage />
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
