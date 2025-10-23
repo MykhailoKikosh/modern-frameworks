@@ -22,6 +22,6 @@ function onRemoveServerDoc(id: number) {
 }
 
 function onExceed(attempted: number, allowed: number) {
-  alert(`Перевищено ліміт. Спробували додати: ${attempted}, доступно ще: ${allowed}`)
+  alert(`Limit exceeded. Attempted to add: ${attempted}, available attempts: ${allowed}`)
 }
 </script>

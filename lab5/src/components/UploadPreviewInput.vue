@@ -136,11 +136,11 @@ const isMaxReached = computed(() => {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
         <p v-if="!isMaxReached" class="upload-preview__label">
-          <span class="upload-preview__label-primary">Натисніть для вибору</span>
-          <span class="upload-preview__label-secondary">або перетягніть файли сюди</span>
+          <span class="upload-preview__label-primary">Click to select</span>
+          <span class="upload-preview__label-secondary">or drag files here</span>
         </p>
         <p v-else class="upload-preview__label upload-preview__label--disabled">
-          Досягнуто максимальну кількість файлів ({{ maxFiles }})
+          Maximum number of files reached ({{ maxFiles }})
         </p>
       </div>
     </div>
@@ -155,7 +155,7 @@ const isMaxReached = computed(() => {
           type="button"
           class="upload-preview__remove"
           @click.stop="removeItem(index)"
-          aria-label="Видалити"
+          aria-label="Delete"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -176,7 +176,7 @@ const isMaxReached = computed(() => {
     </div>
 
     <p v-else class="upload-preview__empty">
-      Файли відсутні
+      No Files
     </p>
   </div>
 </template>

@@ -19,30 +19,24 @@ This library allows users to select multiple images, see previews, and remove se
 ## Installation
 
 ```bash
-npm install @munspel/upload-preview-input
+npm install @mkik/vue-doc-uploader
 ```
 
 or with yarn:
 ```bash
-yarn add @munspel/upload-preview-input
+yarn add @mkik/vue-doc-uploader
 ```
 
 ## Usage
 ```vue
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const files = ref<File[]>([])
-</script>
-
 <template>
-  <UploadPreviewInput v-model="files" :maxFiles="5" />
+  <UploadPreviewInput
+    :documents="serverDocs"
+    :max-files="8"
+    accept="image/*,.pdf,.doc,.docx"
+    @update:files="onLocalFilesUpdate"
+    @remove:document="onRemoveServerDoc"
+    @exceed="onExceed"
+  />
 </template>
-```
-
-## How to publish
-
-```shell
-npm login
-npm publish --access public
 ```
