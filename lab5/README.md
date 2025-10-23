@@ -1,39 +1,48 @@
-# lab5
+# upload-preview-input
 
-This template should help get you started developing with Vue 3 in Vite.
+A Vue 3 component for **previewing images before upload**.  
+This library allows users to select multiple images, see previews, and remove selected images before sending them to the server.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Type Support for `.vue` Imports in TS
+- Drag & select multiple images
+- Preview selected images before upload
+- Remove selected images
+- Limit maximum number of files
+- Fully typed with TypeScript
+- Easy to install and use in any Vue 3 project
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
+## Installation
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```bash
+npm install @munspel/upload-preview-input
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+or with yarn:
+```bash
+yarn add @munspel/upload-preview-input
 ```
 
-### Type-Check, Compile and Minify for Production
+## Usage
+```vue
 
-```sh
-npm run build
+<script setup lang="ts">
+import { ref } from 'vue'
+const files = ref<File[]>([])
+</script>
+
+<template>
+  <UploadPreviewInput v-model="files" :maxFiles="5" />
+</template>
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## How to publish
 
-```sh
-npm run lint
+```shell
+npm login
+npm publish --access public
 ```
