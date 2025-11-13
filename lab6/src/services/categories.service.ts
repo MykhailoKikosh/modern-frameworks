@@ -1,9 +1,9 @@
 import type {AxiosInstance} from "axios";
 import type {Category} from "@/types";
-import type {Readable} from "@/services/types";
+import type {Readable, Creatable, Editable, Deletable} from "@/services/types";
 import {CategoryModel} from "@/models/category.model";
 
-export class CategoriesService implements Readable<Category> {
+export class CategoriesService implements Readable<Category>, Creatable<Category>, Editable<Category>, Deletable<Category> {
 
     constructor(public httpClient: AxiosInstance) {
     }
@@ -12,7 +12,7 @@ export class CategoriesService implements Readable<Category> {
      * Get categories
      * @param params
      */
-    async get(params: any): Promise<Category[]> {
+    async get(params?: any): Promise<Category[]> {
         const response = await this.httpClient.get<Category[]>('/categories', {params});
         return response.data.map((category) => new CategoryModel(category));
     }
@@ -22,7 +22,35 @@ export class CategoriesService implements Readable<Category> {
      * @param id
      */
     async getById(id: number): Promise<Category> {
-        const response = await this.httpClient.get<Category>('/categories', {params: {id}});
+        const response = await this.httpClient.get<Category>(`/categories/${id}`);
+        return new CategoryModel(response.data);
+    }
+
+    /**
+     * Create new category
+     * @param data
+     */
+    async create(data: Category): Promise<Category> {
+        const response = await this.httpClient.post<Category>('/categories', data);
+        return new CategoryModel(response.data);
+    }
+
+    /**
+     * Update category by id
+     * @param id
+     * @param data
+     */
+    async update(id: number, data: Category): Promise<Category> {
+        const response = await this.httpClient.put<Category>(`/categories/${id}`, data);
+        return new CategoryModel(response.data);
+    }
+
+    /**
+     * Delete category by id
+     * @param id
+     */
+    async delete(id: number): Promise<Category> {
+        const response = await this.httpClient.delete<Category>(`/categories/${id}`);
         return new CategoryModel(response.data);
     }
 }

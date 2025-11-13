@@ -10,6 +10,19 @@ export default defineConfig({
         vue(),
         vueDevTools(),
     ],
+    // Dev server proxy to avoid CORS during local development
+    server: {
+        proxy: {
+            // Proxy any request starting with /api to the Platzi API
+            '/api': {
+                // Use Escuelajs public test API for local dev (provides /categories, /products endpoints)
+                target: 'https://api.escuelajs.co/api/v1',
+                changeOrigin: true,
+                secure: true,
+                rewrite: (path) => path.replace(/^\/api/, ''),
+            }
+        }
+    },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
